@@ -21,12 +21,12 @@ class Div2KDataset(torch.utils.data.Dataset):
         ])
     
     def __len__(self):
-        return len(self.num_samples)
+        return self.num_samples
     
     def __getitem__(self, index):
         img = Image.open(self.imgs[self.indices[index]])
-        label = self.hr_transform(img)
-        img = self.lr_transform(label)
-        label = self.label_transform(label)
-        img = self.img_transform(img)
-        return img, label
+        hr_img = self.hr_transform(img)
+        lr_img = self.lr_transform(hr_img)
+        hr_img = self.label_transform(hr_img)
+        lr_img = self.img_transform(lr_img)
+        return lr_img, hr_img
