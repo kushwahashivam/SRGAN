@@ -137,7 +137,7 @@ class Discriminator(nn.Module):
         return x
 
 
-class VGG(nn.Module):
+class VGGNet(nn.Module):
     def __init__(self):
         super().__init__()
         vgg = tv.models.vgg19(pretrained=True)
